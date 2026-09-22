@@ -29,8 +29,7 @@ jobs:
           channel: 'stable'
 
       - name: APK Derle
-        run: flet build apk -y
-
+        run: yes | flet build apk
       - name: APK Dosyasini Yukle
         uses: actions/upload-artifact@v4
         with:
