@@ -1,5 +1,4 @@
-import flet_core as ft
-from flet_runtime.app import app
+import flet as ft
 from cryptography.fernet import Fernet
 
 def main(page: ft.Page):
@@ -119,4 +118,4 @@ def main(page: ft.Page):
     )
 
 if __name__ == "__main__":
-    app(target=main)
+    ft.app(target=main)
