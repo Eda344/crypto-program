@@ -87,7 +87,7 @@ def main(page: ft.Page):
         page.add(
             ft.Row([
                 key_input,
-                ft.IconButton(icon="key", icon_color="greenAccent", on_click=generate_key),
+                ft.IconButton(icon=ft.icons.KEY, icon_color="greenAccent", on_click=generate_key),
             ]),
             message_input,
             ft.Row([
@@ -96,7 +96,7 @@ def main(page: ft.Page):
             ]),
             ft.Row([
                 result_output,
-                ft.IconButton(icon="copy", icon_color="greenAccent", tooltip="copy", on_click=copy_click),
+                ft.IconButton(icon=ft.icons.COPY, icon_color="greenAccent", tooltip="copy", on_click=copy_click),
             ]),
         )
 
