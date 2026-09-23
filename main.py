@@ -1,10 +1,8 @@
-import pyperclip
-import subprocess
 import flet as ft
 from cryptography.fernet import Fernet
 
 
-def main(page: ft.Page):
+async def main(page: ft.Page):
     page.title = "Crypto app"
     page.bgcolor = ft.Colors.BLACK
     page.padding = 20
@@ -86,13 +84,13 @@ def main(page: ft.Page):
         page.update()
 
 #--------------copying function--------------------------------
-    def copy_click(e): 
+    async def copy_click(e): 
             if (result_output.value and not result_output.value.startswith("Warning")
                                    and not result_output.value.startswith("first")):
                 try:
-                    pyperclip.copy(result_output.value)
+                 await page.clipboard.set(str(result_output.value))
                    
-                    snack_bar.open = True
+                 snack_bar.open = True
                 except Exception as err:
                     result_output.value = f"copy error: {err}"
                    
