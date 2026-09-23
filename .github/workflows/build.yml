@@ -40,7 +40,7 @@ jobs:
 
       - name: APK Derle
         run: |
-          flet build apk --yes -v
+          flet build apk -v
 
       - name: APK Dosyasini Yukle
         uses: actions/upload-artifact@v4
