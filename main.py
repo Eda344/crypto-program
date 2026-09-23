@@ -1,9 +1,10 @@
-import flet as ft
+import flet_core as ft
+from flet_runtime.app import app
 from cryptography.fernet import Fernet
 
 def main(page: ft.Page):
     page.title = "Crypto app"
-    page.bgcolor = ft.Colors.BLACK
+    page.bgcolor = ft.colors.BLACK
     page.padding = 20
     page.scroll = ft.ScrollMode.ADAPTIVE
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
@@ -15,17 +16,17 @@ def main(page: ft.Page):
         password=True,
         can_reveal_password=True,
         expand=True,
-        color=ft.Colors.GREEN_ACCENT,
-        label_style=ft.TextStyle(color=ft.Colors.GREEN_ACCENT),
-        border_color=ft.Colors.GREEN_700,
+        color=ft.colors.GREEN_ACCENT,
+        label_style=ft.TextStyle(color=ft.colors.GREEN_ACCENT),
+        border_color=ft.colors.GREEN_700,
     )
     message_input = ft.TextField(
         label="text",
         multiline=True,
         min_lines=2,
-        color=ft.Colors.GREEN_ACCENT,
-        label_style=ft.TextStyle(color=ft.Colors.GREEN_ACCENT),
-        border_color=ft.Colors.GREEN_700,
+        color=ft.colors.GREEN_ACCENT,
+        label_style=ft.TextStyle(color=ft.colors.GREEN_ACCENT),
+        border_color=ft.colors.GREEN_700,
     )
 
     result_output = ft.TextField(
@@ -34,14 +35,14 @@ def main(page: ft.Page):
         min_lines=3,
         expand=True,
         read_only=True,
-        color=ft.Colors.GREEN_ACCENT,
-        label_style=ft.TextStyle(color=ft.Colors.GREEN_ACCENT),
-        border_color=ft.Colors.GREEN_700,
+        color=ft.colors.GREEN_ACCENT,
+        label_style=ft.TextStyle(color=ft.colors.GREEN_ACCENT),
+        border_color=ft.colors.GREEN_700,
     )
 
     snack_bar = ft.SnackBar(
-        content=ft.Text("copied!", color=ft.Colors.BLACK),
-        bgcolor=ft.Colors.GREEN_ACCENT,
+        content=ft.Text("copied!", color=ft.colors.BLACK),
+        bgcolor=ft.colors.GREEN_ACCENT,
     )
     page.overlay.append(snack_bar)
 
@@ -87,8 +88,8 @@ def main(page: ft.Page):
         ft.Row([
             key_input,
             ft.IconButton(
-                icon=ft.Icons.KEY,
-                icon_color=ft.Colors.GREEN_ACCENT,
+                icon=ft.icons.KEY,
+                icon_color=ft.colors.GREEN_ACCENT,
                 on_click=generate_key,
             ),
         ]),
@@ -96,21 +97,21 @@ def main(page: ft.Page):
         ft.Row([
             ft.ElevatedButton(
                 "encrypt",
-                bgcolor=ft.Colors.GREEN_ACCENT,
-                color=ft.Colors.BLACK,
+                bgcolor=ft.colors.GREEN_ACCENT,
+                color=ft.colors.BLACK,
                 on_click=encrypt_click,
             ),
             ft.OutlinedButton(
                 "decrypt",
-                style=ft.ButtonStyle(color=ft.Colors.GREEN_ACCENT),
+                style=ft.ButtonStyle(color=ft.colors.GREEN_ACCENT),
                 on_click=decrypt_click,
             ),
         ]),
         ft.Row([
             result_output,
             ft.IconButton(
-                icon=ft.Icons.COPY,
-                icon_color=ft.Colors.GREEN_ACCENT,
+                icon=ft.icons.COPY,
+                icon_color=ft.colors.GREEN_ACCENT,
                 tooltip="copy",
                 on_click=copy_click,
             ),
@@ -118,4 +119,4 @@ def main(page: ft.Page):
     )
 
 if __name__ == "__main__":
-    ft.app(target=main)
+    app(target=main)
