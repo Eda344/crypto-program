@@ -1,5 +1,5 @@
-import flet as ft
-from flet import app
+import flet_runtime as ft
+from flet_runtime.app import app
 from cryptography.fernet import Fernet
 
 
