@@ -1,4 +1,5 @@
 import flet as ft
+from flet import app
 from cryptography.fernet import Fernet
 
 
@@ -129,5 +130,5 @@ async def main(page: ft.Page):
     )
 
 if __name__ == "__main__":
-    ft.app(target=main, view=ft.AppView.FLET_APP)
+    app(target=main)
   
