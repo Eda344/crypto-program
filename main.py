@@ -1,9 +1,7 @@
-import flet_runtime as ft
-from flet_runtime.app import app
+import flet as ft
 from cryptography.fernet import Fernet
 
-
-async def main(page: ft.Page):
+def main(page: ft.Page):
     page.title = "Crypto app"
     page.bgcolor = ft.Colors.BLACK
     page.padding = 20
@@ -47,7 +45,7 @@ async def main(page: ft.Page):
     )
     page.overlay.append(snack_bar)
 
-    async def encrypt_click(e):
+    def encrypt_click(e):
         try:
             cipher = Fernet(key_input.value.strip().encode())
             encrypted_bytes = cipher.encrypt(message_input.value.encode())
@@ -55,9 +53,9 @@ async def main(page: ft.Page):
             result_output.value = binary_result
         except Exception:
             result_output.value = "first create a key "
-        await page.update_async()
+        page.update()
 
-    async def decrypt_click(e):
+    def decrypt_click(e):
         try:
             cipher = Fernet(key_input.value.strip().encode())
             binary_blocks = message_input.value.strip().split()
@@ -66,26 +64,26 @@ async def main(page: ft.Page):
             result_output.value = decrypted.decode()
         except Exception:
             result_output.value = "Warning! It's the wrong key, please try again"
-        await page.update_async()
+        page.update()
 
-    async def generate_key(e):
+    def generate_key(e):
         key_input.value = Fernet.generate_key().decode()
-        await page.update_async()
+        page.update()
 
-    async def copy_click(e):
+    def copy_click(e):
         if (
             result_output.value
             and not result_output.value.startswith("Warning")
             and not result_output.value.startswith("first")
         ):
             try:
-                await page.clipboard.set(str(result_output.value))
+                page.set_clipboard(str(result_output.value))
                 snack_bar.open = True
             except Exception as err:
                 result_output.value = f"copy error: {err}"
-            await page.update_async()
+            page.update()
 
-    await page.add_async(
+    page.add(
         ft.Row([
             key_input,
             ft.IconButton(
@@ -119,7 +117,5 @@ async def main(page: ft.Page):
         ]),
     )
 
-
 if __name__ == "__main__":
-    app(target=main)
-  
+    ft.app(target=main)
