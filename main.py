@@ -3,12 +3,11 @@ from cryptography.fernet import Fernet
 
 def main(page: ft.Page):
     page.title = "Crypto app"
-    page.bgcolor = ft.colors.BLACK
-    page.padding = 20
     
     try:
-        # Tüm UI kodu burada olacak
-        page.add(ft.Text("Test başarılı"))
+        key_input = ft.TextField(label="fernet key")
+        page.add(key_input)
+        page.add(ft.Text("TextFields çalışıyor"))
     except Exception as err:
         page.add(ft.Text(f"Hata: {err}"))
 
