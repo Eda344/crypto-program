@@ -1,3 +1,4 @@
-cryptograpy
+flet-core
+flet-runtime
+cryptography
 certifi
-
